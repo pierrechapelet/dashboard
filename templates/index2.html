@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Back To School Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/keen-dashboards.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/dc.css" />
+
+<style>
+
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+.feature {
+  fill: #ccc;
+  cursor: pointer;
+}
+
+.directorate.active {
+  fill: orange;
+}
+
+.mesh {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+</style>
+
+</head>
+<body class="application">
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="navbar-brand" href="./">OpenEMIS Back to School Dashboard</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="/">Overview</a></li>
+          <li><a href="https://keen.io/team">Students</a></li>
+          <li><a href="https://github.com/keenlabs/dashboards/tree/gh-pages/layouts/hero-thirds">Staff</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div id="dropdown"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            <div class="map-title">Jordan</div>
+          </div>
+          <div class="chart-stage">
+            <div id="map">
+              <!--<img data-src="holder.js/100%x240/white/text:#grid-1-1">-->
+            </div>
+          </div>
+          <div class="chart-notes">
+            Click on a Field Directorate to view its data
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage">
+            <div id="provider-row-chart"></div>
+            <!--<div id="total-students-nb"></div>
+            <div id="total-refugees-nb"></div>
+            <img data-src="holder.js/100%x240/white">-->
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Schools by Sector
+          </div>
+          <div class="chart-stage">
+            <div id="sector-pie-chart">
+              <!--<img data-src="holder.js/100%x240/white/text:#grid-1-1">-->
+            </div>
+            <!--<img data-src="holder.js/100%x120/white">-->
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Schools by Gender
+          </div>
+          <div class="chart-stage">
+            <div id="gender-pie-chart">
+              <!--<img data-src="holder.js/100%x240/white/text:#grid-1-1">-->
+            </div>
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Schools by Ownership
+          </div>
+          <div class="chart-stage">
+            <div id="ownership-row-chart">
+              <!--<img data-src="holder.js/100%x240/white/text:#grid-1-1">-->
+            </div>
+            
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+<!-- end of three -->
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage">
+            <div id="map-chart">
+              <!--<img data-src="holder.js/100%x240/white/text:#grid-1-1">-->
+            </div>
+            <!--<img data-src="holder.js/100%x120/white">-->
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage">
+            <img data-src="holder.js/100%x120/white">
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Cell Title
+          </div>
+          <div class="chart-stage">
+            <img data-src="holder.js/100%x120/white">
+          </div>
+          <div class="chart-notes">
+            Notes about this chart
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <hr>
+
+    <p class="small text-muted">Copyright © 2015  OpenEMIS. All rights reserved.</a></p>
+
+  </div>
+
+  <script type="text/javascript" src="/static/lib/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="/static/lib/holderjs/holder.js"></script>
+  <script>
+    Holder.add_theme("white", { background:"#fff", foreground:"#a7a7a7", size:10 });
+  </script>
+
+  <script type="text/javascript" src="/static/lib/keen-js/dist/keen.min.js"></script>
+  
+<script type="text/javascript" src="./static/lib/d3/d3.js" charset="utf-8"></script>
+<script type="text/javascript" src="./static/lib/crossfilter/crossfilter.js" charset="utf-8"></script>
+<script type="text/javascript" src="./static/lib/dc/dc.js" charset="utf-8"></script>
+<script type="text/javascript" src="./static/lib/queue/queue.js"> charset="utf-8"</script>
+
+
+   <!--
+  <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+
+
+ 
+  <script type="text/javascript" src="./static/lib/crossfilter/crossfilter.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./static/lib/d3/d3.js" charset="utf-8"></script>
+  <script src="http://d3js.org/d3.geo.projection.v0.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./static/lib/dc/dc.js" charset="utf-8"></script>
+
+  -->
+
+  <script type="text/javascript" src="./static/js/dashboard-v3.js"></script>
+
+
+</body>
+</html>

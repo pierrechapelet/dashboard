@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Back To School Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/keen-dashboards.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/dc.css" />
+
+<style>
+
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+.feature {
+  fill: #ccc;
+  cursor: pointer;
+}
+
+.directorate.active {
+  fill: orange;
+}
+
+.mesh {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+</style>
+
+</head>
+<body class="application">
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">
+          <span><img src="static/img/core.png" height="30" width="30"></span>
+        </a>
+        <a class="navbar-brand" href="./">OpenEMIS Back to School Dashboard</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="/">Overview</a></li>
+          <li><a href="/">Field Directorates</a></li>
+          <li><a href="/">Schools</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            <strong>SCHOOLS</strong>
+          </div>
+          <div class="chart-stage">
+
+            <div class="row">
+
+              <div class="col-sm-6">
+                <div id="jordan-map">
+                  <strong>Jordan</strong>
+                  <a class="reset" href="javascript:jordanChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div>
+                      <strong>Number of Schools</strong>
+                    </div>
+                      <div id="total-schools-nb">
+                        <a class="reset" href="javascript:totalstudentsChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                        <div class="clearfix"></div>
+                      </div>
+                    
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div id="region-pie-chart">
+                      <strong>Type of Area</strong>
+                      <a class="reset" href="javascript:regionChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-12">
+                    <div id="schoolsbyyear-linechart">
+                      <strong>Number by Year</strong>
+                      <a class="reset" href="javascript:schoolsbyyearChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+              </div>
+
+
+              </div>
+
+            </div>
+            
+            <div class="row">
+
+              <div class="col-sm-3">
+                <div id="ownership-pie-chart">
+                  <strong>Ownership</strong>
+                  <a class="reset" href="javascript:ownershipChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+
+              <div class="col-sm-3">
+                <div id="authority-pie-chart">
+                  <strong>Authority</strong>
+                  <a class="reset" href="javascript:authorityChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+
+              <div class="col-sm-3">
+                <div id="shift-pie-chart">
+                  <strong>Shifts</strong>
+                  <a class="reset" href="javascript:shiftChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+
+              <div class="col-sm-3">
+                <div id="gender-pie-chart">
+                  <strong>ستأجر - Gender</strong>
+                  <a class="reset" href="javascript:genderChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="chart-notes">
+            <a href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            STUDENTS
+          </div>
+          <div class="chart-stage">
+
+            <div class="row">
+              <div class="col-sm-12">
+                  <div id="totalsum-stud-nb">
+                  </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                  <div id="totalsum2-stud-nb">
+                  </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            HUMAN RESOURCES
+          </div>
+          <div class="chart-stage">
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Records
+          </div>
+          <div class="chart-stage">
+
+            <div class="row">
+
+              <div class="col-sm-12">
+                <div>
+                    <div class="dc-data-count">
+                        <span class="filter-count"></span> selected out of <span class="total-count"></span> schools | <a
+                            href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
+                    </div>
+                </div>
+                <table class="table table-hover dc-data-table">
+                </table>
+              </div>
+
+            </div>
+            
+
+
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <hr>
+
+    <p class="small text-muted">Copyright © 2015 Jordan Ministry of Education, UNESCO OpenEMIS. All rights reserved.</a></p>
+
+  </div>
+
+  <script type="text/javascript" src="/static/lib/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="/static/lib/holderjs/holder.js"></script>
+  <script>
+    Holder.add_theme("white", { background:"#fff", foreground:"#a7a7a7", size:10 });
+  </script>
+
+  <script type="text/javascript" src="/static/lib/keen-js/dist/keen.min.js"></script>
+  
+<script type="text/javascript" src="./static/lib/d3/d3.js" charset="utf-8"></script>
+<script type="text/javascript" src="./static/lib/crossfilter/crossfilter.js" charset="utf-8"></script>
+<script type="text/javascript" src="./static/lib/dc/dc.js" charset="utf-8"></script>
+<script type="text/javascript" src="./static/lib/queue/queue.js"> charset="utf-8"</script>
+
+
+   <!--
+  <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+
+
+ 
+  <script type="text/javascript" src="./static/lib/crossfilter/crossfilter.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./static/lib/d3/d3.js" charset="utf-8"></script>
+  <script src="http://d3js.org/d3.geo.projection.v0.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./static/lib/dc/dc.js" charset="utf-8"></script>
+
+  -->
+
+  <script type="text/javascript" src="./static/js/dashboard-v4.js"></script>
+
+
+</body>
+</html>
